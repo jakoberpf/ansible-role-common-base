@@ -31,9 +31,8 @@ Example Playbook
 
 License
 -------
-
 BSD
 
 Author Information
 ------------------
-ikaruswill
+jakoberpf (initial: ikaruswill)
