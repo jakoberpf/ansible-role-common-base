@@ -1,0 +1,7 @@
+---
+base_default_locale: en_US.UTF-8
+base_apt_packages:
+- git
+- rsync
+- nano
+- acl # For ansible become_user https://stackoverflow.com/questions/36646880/ansible-2-1-0-using-become-become-user-fails-to-set-permissions-on-temp-file
