@@ -8,6 +8,7 @@
     name: '{{ base_apt_packages }}'
     state: present
   register: setup_ubuntu
+  notify: reboot_check
 
 - name: Set default locale
   become: yes
@@ -17,6 +18,7 @@
     line: 'LANG={{ base_default_locale }}'
     state: present
   register: setup_ubuntu
+  notify: reboot_check
 
 - name: Enable locale
   become: yes
@@ -24,14 +26,4 @@
     name: '{{ base_default_locale }}'
     state: present
   register: setup_ubuntu
-
-- name: Reboot host and wait for it to restart
-  reboot:
-    msg: "Reboot initiated by Ansible"
-    connect_timeout: 10
-    reboot_timeout: 300
-    pre_reboot_delay: 0
-    post_reboot_delay: 60
-    test_command: whoami
-  become: true
-  when: setup_ubuntu.changed
+  notify: reboot_check
